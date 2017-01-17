@@ -1,0 +1,59 @@
+<template>  
+	<div class="container">	
+		<img class="photo" src="{{photoPic}}"></img>
+		<div class="content">
+			<text class="username" value="{{userName}}"></text>
+			<text class="username" value="{{unusedCard}}"></text>
+		</div>
+	</div>
+</template>
+
+<style>
+  .container {
+	position: absolute; left: 20; right: 20; top: 20; height: 120; 
+	flex-direction: row; 
+	background-color: #fff; 	
+  }  
+  .photo { margin: 20; marginLeft:30; width: 80; height: 80; border-radius:80; border-color: #0b0; border-width:3; background-color: #ab1;} 
+  .content {
+    flex-direction: column; 
+    marginLeft: 30;
+    marginTop: 30;	
+  }
+  .username {
+        marginTop: 10;
+		font-size: 15;
+		color: #000;		
+    }
+</style>
+
+<script>
+var myToast = require('@weex-module/eventModule');
+var globalEvent = require('@weex-module/globalEvent');
+
+module.exports = {
+    data: {
+      photoPic: 'http://t.cn/RGE3uo9',
+      userName: "用户名：hanpengfei—5201314",
+      unusedCard: "未用券：12345张",
+      itemList: [
+        {title: 'Java', pictureUrl: 'http://t.cn/RGE3uo9'},
+        {title: 'Objective C', pictureUrl: 'http://t.cn/RGE31hq'},
+        {title: 'JavaScript', pictureUrl: 'http://t.cn/RGE3AJt'}
+      ]
+    },
+	
+    methods: {	      
+	  ready: function ready() {
+		var self = this;
+		globalEvent.addEventListener("keyEvent", function (e) {		 
+	      self.userName = "hanpengfei_" + e.keycode;
+	    });
+		globalEvent.addEventListener("userInfo", function (e) {
+		  console.log("userInfo--" + e.userName);
+	      self.userName = e.userName;
+	    });
+	  }
+	}
+}
+</script>

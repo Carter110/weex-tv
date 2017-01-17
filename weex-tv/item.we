@@ -1,0 +1,62 @@
+<template>
+   	<div class="container">
+		<text class="money" if={{moneyshown}}>{{money}}</text>
+		<text class="corner" if={{cornershown}}>{{corner}}</text>
+		<text class="desc" if={{descshown}}>{{desc}}</text>
+		<text class="title">{{title}}</text>
+		
+		<text class="tip" if={{tipshown}}>{{tip}}</text>
+	</div>
+</template>
+
+<style>
+  .container {
+	width: 120; 
+	height: 80;
+	background-color: rgba(50, 50, 50, 0.2);	
+  }
+  .money { height: 30; padding: 2; flex: 1; color: black; font-size: 15; 
+  } 
+  .desc { height: 30; flex: 2; color: black; font-size: 9; padding: 2;
+  } 
+  .title { position: absolute; bottom: 0; left: 0; right: 0; flex: 1; color: black; font-size: 11; padding: 2; 
+		background-color: rgba(20, 20, 20, 0.3);
+  } 
+  .corner { position: absolute; right: 0; top: 0; padding: 1; 
+		flex: 1; color: black; font-size: 8; font-weight: bold;
+		background-color: rgba(10, 10, 10, 0.5);
+  } 
+  .tip { position: absolute; left: 0; right: 0; top: 25; bottom: 20; 
+		flex: 1; color: black; font-size: 13; text-align: center;		
+  }   
+</style>
+
+<script>
+require('weex-components');
+
+module.exports = {
+    data: {
+      money: "5元",
+	  moneyshown: true,
+      desc: "还未使用xx，还未使用yy，还未使用zzz",
+	  descshown: true,
+      corner: "已使用",
+	  cornershown: true,
+      title: "2017年12月25日过期",
+	  
+	  tip: "没有代金券",
+	  tipshown: true,
+    },
+	
+	 created: function() {
+       // this.$on('notifydata', function (e) {
+		//  console.log("notifydata--e = " + e);
+        //  this.money = e.money;
+        //}.bind(this))
+    },
+	
+    methods: {	
+        
+	}	 
+}
+</script>
